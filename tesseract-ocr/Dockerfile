@@ -1,15 +1,14 @@
 FROM ubuntu:20.10
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
-    && apt-get clean \
+RUN apt-get clean \
     && apt-get update -y \
     && apt-get install apt-utils -y \
     && apt-get upgrade -y \
     && apt-get dist-upgrade -y \
     && apt-get install wget -y \
     && mkdir -p /tmp/python3.8/ && cd /tmp/python3.8 \
-    && wget http://npm.taobao.org/mirrors/python/3.8.3/Python-3.8.3.tgz \
+    && wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz \
     && tar -xvzf Python-3.8.3.tgz \
     && cd Python-3.8.3 \
     && apt-get install libbz2-dev libncurses5-dev libgdbm-dev libgdbm-compat-dev liblzma-dev libsqlite3-dev libssl-dev openssl tk-dev uuid-dev libreadline-dev -y \
@@ -18,7 +17,7 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
     && make && make install \
     && ln -s /usr/local/python3/bin/python3.8 /usr/bin/python3 \
     && ln -s /usr/local/python3/bin/pip3.8 /usr/bin/pip3 \
-    && pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip \
+    && pip3 install --upgrade pip \
     && apt-get install tesseract-ocr -y \
     && apt-get install libtesseract-dev -y \
     && apt-get install clang -y \
