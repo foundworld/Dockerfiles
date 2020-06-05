@@ -34,13 +34,13 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
     && curl -o /usr/local/share/tessdata/chi_tra_vert.traineddata \
        https://github.com/tesseract-ocr/tessdata_best/raw/master/chi_tra_vert.traineddata \
     && curl -o /usr/local/share/tessdata/HanS.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanS.traineddata
+       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanS.traineddata \
     && curl -o /usr/local/share/tessdata/HanS_vert.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanS_vert.traineddata
+       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanS_vert.traineddata \
     && curl -o /usr/local/share/tessdata/HanT.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanT.traineddata
+       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanT.traineddata \
     && curl -o /usr/local/share/tessdata/HanT_vert.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanT_vert.traineddata
+       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanT_vert.traineddata \
     && rm -rf /tmp/python3.8 \
     && apt-get purge --auto-remove -y \
     autoconf \
@@ -50,6 +50,6 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
     curl \
     git \
     libtool \
-  && apt-get clean \
+  && apt-get clean
 
 ENTRYPOINT [ "python3" ]
