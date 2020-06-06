@@ -33,4 +33,4 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
        https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT_vert.traineddata \
     && apt-get clean
 
-ENTRYPOINT [ "python3" ]
+ENTRYPOINT [ "java" ]
