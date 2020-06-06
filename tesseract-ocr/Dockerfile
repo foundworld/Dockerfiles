@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM python:3.8.3-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get clean \
@@ -7,14 +7,8 @@ RUN apt-get clean \
     && apt-get upgrade -y \
     && apt-get dist-upgrade -y \
     && apt-get install wget -y \
-    && mkdir -p /tmp/python3.8/ && cd /tmp/python3.8 \
-    && wget https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz \
-    && tar -xvzf Python-3.8.3.tgz \
-    && cd Python-3.8.3 \
     && apt-get install libbz2-dev libncurses5-dev libgdbm-dev libgdbm-compat-dev liblzma-dev libsqlite3-dev libssl-dev openssl tk-dev uuid-dev libreadline-dev -y \
     && apt-get install libffi-dev -y \
-    && ./configure --with-ssl --prefix=/usr/local/python3 --enable-optimizations \
-    && make && make install \
     && ln -s /usr/local/python3/bin/python3.8 /usr/bin/python3 \
     && ln -s /usr/local/python3/bin/pip3.8 /usr/bin/pip3 \
     && pip3 install --upgrade pip \
@@ -41,16 +35,6 @@ RUN apt-get clean \
        https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT.traineddata \
     && curl -o /usr/local/share/tessdata/HanT_vert.traineddata \
        https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT_vert.traineddata \
-    && rm -rf /tmp/python3.8 \
-    && apt-get purge --auto-remove -y \
-    autoconf \
-    automake \
-    build-essential \
-    ca-certificates \
-    curl \
-    wget \
-    git \
-    libtool \
-  && apt-get clean
+    && apt-get clean
 
-ENTRYPOINT [ "python3" ]
+ENTRYPOINT [ "python" ]
