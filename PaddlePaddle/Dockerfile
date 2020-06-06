@@ -6,8 +6,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN mkdir -p /usr/share/workdir/
 WORKDIR /usr/share/workdir/
 
-RUN apt-get install git -y \
-    && git clone https://gitee.com/paddlepaddle/PaddleOCR \
+RUN pip install --upgrade pip \
+    && apt-get install git -y \
+    && git clone https://github.com/PaddlePaddle/PaddleOCR.git \
     && cd PaddleOCR \
     && pip3 install -r requirments.txt
 
