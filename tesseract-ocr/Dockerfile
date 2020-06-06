@@ -48,6 +48,7 @@ RUN apt-get clean \
     build-essential \
     ca-certificates \
     curl \
+    wget \
     git \
     libtool \
   && apt-get clean
