@@ -6,11 +6,8 @@ RUN apt-get clean \
     && apt-get install apt-utils -y \
     && apt-get upgrade -y \
     && apt-get dist-upgrade -y \
-    && apt-get install wget -y \
     && apt-get install libbz2-dev libncurses5-dev libgdbm-dev libgdbm-compat-dev liblzma-dev libsqlite3-dev libssl-dev openssl tk-dev uuid-dev libreadline-dev -y \
     && apt-get install libffi-dev -y \
-    && ln -s /usr/local/python3/bin/python3.8 /usr/bin/python3 \
-    && ln -s /usr/local/python3/bin/pip3.8 /usr/bin/pip3 \
     && pip3 install --upgrade pip \
     && apt-get install tesseract-ocr -y \
     && apt-get install libtesseract-dev -y \
@@ -35,6 +32,7 @@ RUN apt-get clean \
        https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT.traineddata \
     && curl -o /usr/local/share/tessdata/HanT_vert.traineddata \
        https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT_vert.traineddata \
+    && apt-get purge --auto-remove -y curl \
     && apt-get clean
 
 ENTRYPOINT [ "python" ]
