@@ -28,7 +28,7 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list \
     && wget -O /usr/local/share/tessdata/HanT.traineddata \
        https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT.traineddata \
     && wget -O /usr/local/share/tessdata/HanT_vert.traineddata \
-       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT_vert.traineddata
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT_vert.traineddata \
     && apt-get install openjdk-8-jdk \
     && apt-get clean
 
