@@ -21,6 +21,7 @@ RUN apt-get clean \
     && apt-get install tesseract-ocr -y \
     && apt-get install libtesseract-dev -y \
     && apt-get install clang -y \
+    && apt-get install curl -y \
     && mkdir -p /usr/local/share/tessdata/ \
     && curl -o /usr/local/share/tessdata/eng.traineddata \
        https://github.com/tesseract-ocr/tessdata_best/raw/master/eng.traineddata \
