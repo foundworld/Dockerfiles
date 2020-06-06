@@ -24,23 +24,23 @@ RUN apt-get clean \
     && apt-get install curl -y \
     && mkdir -p /usr/local/share/tessdata/ \
     && curl -o /usr/local/share/tessdata/eng.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/eng.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/eng.traineddata \
     && curl -o /usr/local/share/tessdata/chi_sim.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/chi_sim.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/chi_sim.traineddata \
     && curl -o /usr/local/share/tessdata/chi_sim_vert.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/chi_sim_vert.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/chi_sim_vert.traineddata \
     && curl -o /usr/local/share/tessdata/chi_tra.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/chi_tra.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/chi_tra.traineddata \
     && curl -o /usr/local/share/tessdata/chi_tra_vert.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/chi_tra_vert.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/chi_tra_vert.traineddata \
     && curl -o /usr/local/share/tessdata/HanS.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanS.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanS.traineddata \
     && curl -o /usr/local/share/tessdata/HanS_vert.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanS_vert.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanS_vert.traineddata \
     && curl -o /usr/local/share/tessdata/HanT.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanT.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT.traineddata \
     && curl -o /usr/local/share/tessdata/HanT_vert.traineddata \
-       https://github.com/tesseract-ocr/tessdata_best/raw/master/script/HanT_vert.traineddata \
+       https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/master/script/HanT_vert.traineddata \
     && rm -rf /tmp/python3.8 \
     && apt-get purge --auto-remove -y \
     autoconf \
