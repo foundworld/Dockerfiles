@@ -10,6 +10,6 @@ RUN pip install --upgrade pip \
     && apt-get install git -y \
     && git clone https://github.com/PaddlePaddle/PaddleOCR.git \
     && cd PaddleOCR \
-    && pip3 install -r requirments.txt
+    && pip install -r requirments.txt
 
 ENTRYPOINT [ "python" ]
