@@ -1,15 +1,13 @@
 FROM python:3.7.4-slim
 
-RUN python3 -m pip install paddlepaddle
-
 ARG DEBIAN_FRONTEND=noninteractive
-RUN mkdir -p /usr/share/workdir/
 WORKDIR /usr/share/workdir/
 
 RUN pip install --upgrade pip \
     && apt-get install git -y \
+    && python3 -m pip install paddlepaddle \
     && git clone https://github.com/PaddlePaddle/PaddleOCR.git \
-    && cd PaddleOCR \
-    && pip install -r requirments.txt
+    && pip install -r ./PaddleOCR/requirments.txt \
+    && export PYTHONPATH=.
 
 ENTRYPOINT [ "python" ]
