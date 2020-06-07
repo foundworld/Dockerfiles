@@ -6,7 +6,7 @@ WORKDIR /usr/share/workdir/
 RUN pip install --upgrade pip \
     && apt-get install git -y \
     && python3 -m pip install paddlepaddle \
-    && git clone https://github.com/PaddlePaddle/PaddleOCR.git \
+    && git clone -b develop https://github.com/PaddlePaddle/PaddleOCR.git \
     && pip install -r ./PaddleOCR/requirments.txt \
     && export PYTHONPATH=.
 
