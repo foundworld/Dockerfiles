@@ -7,6 +7,7 @@ RUN apt-get clean \
     && apt-get update -y \
     && apt-get install git -y \
     && pip install --upgrade pip \
+    && apt-get install gcc -y \
     && python3 -m pip install paddlepaddle \
     && git clone -b develop https://github.com/PaddlePaddle/PaddleOCR.git \
     && pip install -r ./PaddleOCR/requirments.txt \
