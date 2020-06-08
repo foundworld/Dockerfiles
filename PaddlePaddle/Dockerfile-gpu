@@ -1,0 +1,15 @@
+FROM python:3.7.4-slim
+
+ARG DEBIAN_FRONTEND=noninteractive
+WORKDIR /usr/share/workdir/
+
+RUN apt-get clean \
+    && apt-get update -y \
+    && apt-get install git -y \
+    && pip install --upgrade pip \
+    && apt-get install gcc -y \
+    && python3 -m pip install paddlepaddle-gpu \
+    && apt-get clean \
+    && export PYTHONPATH=.
+
+ENTRYPOINT [ "python" ]
