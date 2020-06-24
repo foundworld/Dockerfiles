@@ -1,24 +1,16 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
 
-RUN sudo apt-get update
-
-RUN sudo apt-get update
-
-RUN sudo apt-get install gpg-agent -y 
-
-RUN sudo apt autoremove
-
-RUN sudo apt-get install wget -y
-
-RUN wget -O - https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key | sudo apt-key add - 
-RUN sudo add-apt-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./' 
-RUN sudo apt-get update 
-
-RUN sudo dpkg --add-architecture i386 
-
-RUN wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - 
-RUN sudo apt-get update --fix-missing -y 
-RUN sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' 
-RUN sudo apt-get update 
-
-RUN sudo apt install winehq-stable -y
+RUN sudo apt-get update \
+  && sudo apt-get update \
+  && sudo apt-get install gpg-agent -y \
+  && sudo apt autoremove \
+  && sudo apt-get install wget -y \
+  && wget -O - https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/Release.key | sudo apt-key add - \
+  && sudo add-apt-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./' \
+  && sudo apt-get update \
+  && sudo dpkg --add-architecture i386 \
+  && wget -O - https://dl.winehq.org/wine-builds/winehq.key | sudo apt-key add - \
+  && sudo apt-get update --fix-missing -y \
+  && sudo add-apt-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' \
+  && sudo apt-get update \
+  && sudo apt install winehq-stable -y
