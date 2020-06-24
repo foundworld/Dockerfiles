@@ -1,0 +1,9 @@
+FROM foundworld/ubuntu-desktop-wine:0.1
+
+RUN sudo apt-get remove winetricks
+
+RUN sudo mkdir /wine-temp \
+  && cd /wine-temp \
+  && wget https://github.com/Winetricks/winetricks/blob/master/src/winetricks \
+  && sudo chmod +x winetricks\
+  && sudo mv -v winetricks /usr/local/bin
