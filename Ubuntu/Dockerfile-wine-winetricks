@@ -4,6 +4,6 @@ RUN sudo apt-get remove winetricks
 
 RUN sudo mkdir /wine-temp \
   && cd /wine-temp \
-  && wget https://github.com/Winetricks/winetricks/blob/master/src/winetricks \
+  && wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
   && sudo chmod +x winetricks\
   && sudo mv -v winetricks /usr/local/bin
