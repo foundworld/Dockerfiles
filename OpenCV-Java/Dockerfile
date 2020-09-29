@@ -1,4 +1,4 @@
-FROM openjdk:8u252-jdk-slim
+FROM openjdk:8u212-jre-alpine3.9
 
 ENV LANG C.UTF-8
 
