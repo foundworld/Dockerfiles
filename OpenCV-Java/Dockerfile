@@ -19,13 +19,7 @@ RUN set -x \
         g++ \
         linux-headers \
         python \
-    && mkdir -p /tmp/jdk && cd /tmp/jdk \
-    && wget \
-        --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
-        -O jdk.tar.gz \
-        "http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz" \
-    && tar -xzf jdk.tar.gz --strip-components=1 \
-    && export JAVA_HOME=/tmp/jdk \
+    
     && export PATH=$PATH:$JAVA_HOME/bin \
     && mkdir -p /tmp/ant && cd /tmp/ant \
     && wget -O apache-ant.tar.gz "http://archive.apache.org/dist/ant/binaries/apache-ant-1.10.1-bin.tar.gz" \
