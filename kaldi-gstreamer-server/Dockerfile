@@ -1,21 +1,22 @@
 FROM ubuntu:bionic
 
-RUN apt-get update && apt-get install -y  \
-    procps \
-    autoconf \
-    automake \
-    bzip2 \
-    g++ \
-    git \
-    gstreamer1.0-plugins-good \
+RUN apt-get update
+RUN apt-get install -y procps
+RUN apt-get install -y autoconf
+RUN apt-get install -y automake
+RUN apt-get install -y    bzip2
+RUN apt-get install -y    g++
+RUN apt-get install -y    git
+RUN apt-get install -y    gfortran
+RUN apt-get install -y gstreamer1.0-plugins-good \
     gstreamer1.0-tools \
     gstreamer1.0-pulseaudio \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-ugly  \
-    libatlas3-base \
-    libgstreamer1.0-dev \
-    libtool-bin \
+    libatlas3-base
+RUN apt-get install -y    libgstreamer1.0-dev 
+RUN apt-get install -y    libtool-bin \
     make \
     python2.7 \
     python3 \
@@ -23,13 +24,13 @@ RUN apt-get update && apt-get install -y  \
     python-yaml \
     python-simplejson \
     python-gi \
-    subversion \
-    unzip \
-    wget \
+    subversion
+RUN apt-get install -y    unzip
+RUN apt-get install -y    wget \
     build-essential \
-    python-dev \
-    sox \
-    zlib1g-dev && \
+    python-dev
+RUN apt-get install -y    sox
+RUN apt-get install -y    zlib1g-dev && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
     pip install ws4py==0.3.2 && \
@@ -46,8 +47,13 @@ RUN wget http://www.digip.org/jansson/releases/jansson-2.7.tar.bz2 && \
     echo "/usr/local/lib" >> /etc/ld.so.conf.d/jansson.conf && ldconfig && \
     rm /opt/jansson-2.7.tar.bz2 && rm -rf /opt/jansson-2.7
 
-RUN git clone https://github.com/kaldi-asr/kaldi && \
-    cd /opt/kaldi/tools && \
+RUN cd /opt && \
+    git clone https://github.com/kaldi-asr/kaldi
+    
+RUN cd /opt/kaldi/tools && \
+    /opt/kaldi/tools/extras/check_dependencies.sh
+
+RUN cd /opt/kaldi/tools && \
     make -j $(nproc) && \
     ./install_portaudio.sh && \
     /opt/kaldi/tools/extras/install_mkl.sh && \
@@ -55,8 +61,8 @@ RUN git clone https://github.com/kaldi-asr/kaldi && \
     sed -i '/-g # -O0 -DKALDI_PARANOID/c\-O3 -DNDEBUG' kaldi.mk && \
     make clean -j $(nproc) && make -j $(nproc) depend && make -j $(nproc) && \
     cd /opt/kaldi/src/online && make depend -j $(nproc) && make -j $(nproc) && \
-    cd /opt/kaldi/src/gst-plugin && sed -i 's/-lmkl_p4n//g' Makefile && make depend -j $(nproc) && make -j $(nproc)
-RUN cd /opt && \
+    cd /opt/kaldi/src/gst-plugin && sed -i 's/-lmkl_p4n//g' Makefile && make depend -j $(nproc) && make -j $(nproc) && \
+    cd /opt && \
     git clone https://github.com/alumae/gst-kaldi-nnet2-online.git && \
     cd /opt/gst-kaldi-nnet2-online/src && \
     sed -i '/KALDI_ROOT?=\/home\/tanel\/tools\/kaldi-trunk/c\KALDI_ROOT?=\/opt\/kaldi' Makefile && \
@@ -69,7 +75,7 @@ RUN cd /opt && \
     find /opt/kaldi/tools/ -type f \( -not -name '*.so' -and -not -name '*.so*' \) -delete && \
     cd /opt && git clone https://github.com/alumae/kaldi-gstreamer-server.git && \
     rm -rf /opt/kaldi-gstreamer-server/.git/ && \
-    rm -rf /opt/kaldi-gstreamer-server/test/
+    rm -rf /opt/kaldi-gstreamer-server/test/ 
 
 COPY start.sh stop.sh /opt/
 
