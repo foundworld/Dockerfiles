@@ -49,9 +49,6 @@ RUN wget http://www.digip.org/jansson/releases/jansson-2.7.tar.bz2 && \
 
 RUN cd /opt && \
     git clone https://github.com/kaldi-asr/kaldi
-    
-RUN cd /opt/kaldi/tools && \
-    /opt/kaldi/tools/extras/check_dependencies.sh
 
 RUN cd /opt/kaldi/tools && \
     make -j $(nproc) && \
@@ -61,8 +58,9 @@ RUN cd /opt/kaldi/tools && \
     sed -i '/-g # -O0 -DKALDI_PARANOID/c\-O3 -DNDEBUG' kaldi.mk && \
     make clean -j $(nproc) && make -j $(nproc) depend && make -j $(nproc) && \
     cd /opt/kaldi/src/online && make depend -j $(nproc) && make -j $(nproc) && \
-    cd /opt/kaldi/src/gst-plugin && sed -i 's/-lmkl_p4n//g' Makefile && make depend -j $(nproc) && make -j $(nproc) && \
-    cd /opt && \
+    cd /opt/kaldi/src/gst-plugin && sed -i 's/-lmkl_p4n//g' Makefile && make depend -j $(nproc) && make -j $(nproc)
+    
+RUN cd /opt && \
     git clone https://github.com/alumae/gst-kaldi-nnet2-online.git && \
     cd /opt/gst-kaldi-nnet2-online/src && \
     sed -i '/KALDI_ROOT?=\/home\/tanel\/tools\/kaldi-trunk/c\KALDI_ROOT?=\/opt\/kaldi' Makefile && \
@@ -72,8 +70,9 @@ RUN cd /opt/kaldi/tools && \
     rm -rf /opt/kaldi/.git && \
     rm -rf /opt/kaldi/egs/ /opt/kaldi/windows/ /opt/kaldi/misc/ && \
     find /opt/kaldi/src/ -type f -not -name '*.so' -delete && \
-    find /opt/kaldi/tools/ -type f \( -not -name '*.so' -and -not -name '*.so*' \) -delete && \
-    cd /opt && git clone https://github.com/alumae/kaldi-gstreamer-server.git && \
+    find /opt/kaldi/tools/ -type f \( -not -name '*.so' -and -not -name '*.so*' \) -delete
+    
+RUN cd /opt && git clone https://github.com/alumae/kaldi-gstreamer-server.git && \
     rm -rf /opt/kaldi-gstreamer-server/.git/ && \
     rm -rf /opt/kaldi-gstreamer-server/test/ 
 
