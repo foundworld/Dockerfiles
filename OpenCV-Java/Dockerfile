@@ -10,7 +10,7 @@ RUN apt-get install -y openjdk-8-jdk \
   && export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 \
   && export PATH=$PATH:$JAVA_HOME/bin
 
-RUN apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+RUN apt-get install -y cmake git wget tar libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 RUN apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev
 RUN apt-get install -y ant
 
