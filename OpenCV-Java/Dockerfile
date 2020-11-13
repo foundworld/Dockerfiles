@@ -8,10 +8,10 @@ ENV OPENCV_SRC_URL "https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar
 ENV OPENCV_INSTALL_PREFIX "/usr/local/opencv"
 ENV OPENCV_JAVA_PATH "$OPENCV_INSTALL_PREFIX/share/OpenCV/java"
 
-RUN apt-get install build-essential
-RUN apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
-RUN apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
-RUN apt-get install ant
+RUN apt-get install -y build-essential
+RUN apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+RUN apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+RUN apt-get install -y ant
 
 RUN mkdir -p /opencv && cd opencv \
   && git clone https://github.com/opencv/opencv.git \
