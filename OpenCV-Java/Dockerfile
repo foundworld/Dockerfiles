@@ -31,13 +31,13 @@ RUN set -x \
     && tar -xzf opencv-src.tar.gz --strip-components=1 \
     && mkdir build && cd build \
     && cmake \
-        -D CMAKE_BUILD_TYPE=Release \
-        -D CMAKE_INSTALL_PREFIX="$OPENCV_INSTALL_PREFIX" \
-        -D BUILD_SHARED_LIBS=OFF \
-        -D BUILD_EXAMPLES=OFF \
-        -D BUILD_TESTS=OFF \
-        -D BUILD_PERF_TESTS=OFF \
-        -D BUILD_JAVA=ON \
+        -DCMAKE_BUILD_TYPE=RELEASE \
+        -DCMAKE_INSTALL_PREFIX="$OPENCV_INSTALL_PREFIX" \
+        -DBUILD_SHARED_LIBS=OFF \
+        -DBUILD_EXAMPLES=OFF \
+        -DBUILD_TESTS=OFF \
+        -DBUILD_PERF_TESTS=OFF \
+        -DBUILD_JAVA=ON \
         .. \
     && echo $JAVA_HOME \
     && echo $PATH \
