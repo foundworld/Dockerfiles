@@ -15,9 +15,9 @@ RUN apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev li
 RUN apt-get install -y ant
 
 RUN mkdir -p /opencv && cd /opencv \
-  && git clone https://github.com/opencv/opencv.git \
-  && cd opencv && git checkout 4.4.0 \
-  && git pull && mkdir build && cd build \
+  && wget -O opencv-src.tar.gz "https://github.com/opencv/opencv/archive/4.4.0.tar.gz" \
+  && tar -xzf opencv-src.tar.gz --strip-components=1 \
+  && mkdir build && cd build \
   && cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local/opencv -DBUILD_TESTS=OFF .. \
   && make -j$(nproc) \
   && make install
