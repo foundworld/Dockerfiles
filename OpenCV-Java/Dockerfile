@@ -3,11 +3,6 @@ FROM openjdk:8u252-jdk-slim
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG C.UTF-8
 
-ENV OPENCV_VERSION 4.4.0
-ENV OPENCV_SRC_URL "https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar.gz"
-ENV OPENCV_INSTALL_PREFIX "/usr/local/opencv"
-ENV OPENCV_JAVA_PATH "$OPENCV_INSTALL_PREFIX/share/OpenCV/java"
-
 RUN apt-get install -y build-essential
 RUN apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 RUN apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
